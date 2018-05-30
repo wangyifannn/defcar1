@@ -978,6 +978,11 @@ button#bom_apply_btn {
     margin-left: 33px;
 }
 
+.upkeepDetail,
+.plateDetail {
+    margin-bottom: 10px;
+}
+
 #toolForm .checktitle span:nth-child(4),
 #toolForm .checkitem span:nth-child(4),
 #toolRecord_model .checktitle span:nth-child(4),
