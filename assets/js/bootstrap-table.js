@@ -1169,7 +1169,7 @@
                 '<div class="pull-' + this.options.searchAlign + ' search">',
                 sprintf('<input class="form-control' +
                     sprintf(' input-%s', this.options.iconSize) +
-                    '" type="text" placeholder="%s,Enter开始查询">',
+                    '" type="text" placeholder="%s,按Enter键开始查询">',
                     this.options.formatSearch()),
                 '</div>');
 
