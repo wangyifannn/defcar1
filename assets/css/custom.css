@@ -232,7 +232,7 @@ li.sidebar-dropdown span:nth-child(2n+0) {
 }
 
 .sidebar-wrapper .sidebar-menu .sidebar-dropdown .sidebar-submenu li {
-    padding-left: 25px;
+    padding: 2px 25px 2px;
     font-size: 13px;
 }
 

@@ -112,7 +112,7 @@ function bomApply(name, vSn, btnname) {
     // 获取研发申请记录
     $.ajax({
         // url: "http://localhost/car/defcar/json/toolapply.json",
-        url: "https://wangyifannn.github.io/newdefcar/json/toolapply.json",
+        url: "https://wangyifannn.github.io/defcar1/json/toolapply.json",
         success: function(res) {
             console.log(res);
             if (res.length <= 0) { //尚未申请

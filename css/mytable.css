@@ -186,6 +186,10 @@ table {
     display: none;
 }
 
+#carTypeIn .form_btngroup {
+    display: none;
+}
+
 .form_subject p.pull-right {
     cursor: pointer;
 }
@@ -384,7 +388,15 @@ ul.mydrop_menu {
     border: 1px solid lightgray;
 }
 
-ul.mydrop_menu>li>a {
+ul.mydrop_menu>li>a:link {
+    padding: 0px;
+}
+
+ul.mydrop_menu>li>a:visited {
+    padding: 0px;
+}
+
+ul.mydrop_menu>li>a:active {
     padding: 0px;
 }
 
@@ -718,6 +730,10 @@ input.form-control {
     width: 700px;
 }
 
+div#sumCarList .table-responsive {
+    padding-top: 3px;
+}
+
 .driveradd_btn {
     display: inline-block;
 }
@@ -728,7 +744,7 @@ input.form-control {
 }
 
 .modal.in .modal-dialog {
-    margin-top: 15%;
+    margin-top: 8%;
 }
 
 #toolRecord_model .modal-dialog,
