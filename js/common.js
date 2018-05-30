@@ -752,7 +752,11 @@ function getcnidSolve(url, boxname, btnname) {
                     }
                 }
             }
-            var checkboxs = "<div class='audit_fot'><span class='operator'>操作人：王宇" + "</span><span class='date'>操作日期：2019-20-22</span></div>";
+            if (boxname == "#bomCheckForm .bomcheck_itembox") {
+                checkboxs += "<div class='audit_fot check_user'><span class='operator'>申请人：王宇" + "</span><span class='date'>申请日期：2019-20-22</span></div>";
+            }
+            checkboxs += "<div class='audit_fot check_user'><span class='operator'>检查人：王宇" + "</span><span class='date'>检查日期：2019-20-22</span></div>";
+            checkboxs += "<div class='audit_fot operator_user'><span class='operator'>核对人：王风雨" + "</span><span class='date'>核对日期：2019-20-22</span></div>";
             checkboxs += '<div class="form-group">' +
                 '<div class="form_btngroup clearfix">' +
                 '<button type="button" class="btn btn-default btn-primary pull-left ' + btnname + '">提交</button>' +
