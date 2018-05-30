@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>维修车间大屏</title>
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-3.3.7.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/screensmall.css" media="screen and (max-width: 2100px)">
+    <link rel="stylesheet" type="text/css" href="../css/screenbig.css" media="screen and (min-width: 2100px) and (max-width: 5148px)">
+    <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../assets/js/myslideup.js"></script>
+    <style>
+        /*声明 WebFont*/
+        
+        @font-face {
+            font-family: 'langqingti';
+            src: url('../assets/langqianti.otf');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'UnidreamLED';
+            src: url('../assets/UnidreamLED.ttf');
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style>
+</head>
+
+<body class="shopbody" style="height: 100%;" id="full_mainlist">
+    <div class="shopwhole">
+        <img class="logo" src="../img/logo.png" alt="">
+        <h3>
+            <img src="../img/screen/left.png" alt=""> 车辆进出列表
+            <img src="../img/screen/right.png" alt="">
+        </h3>
+        <button id='btn'>全屏显示</button>
+        <div class="workshopList">
+            <ul class="title">
+                <li>
+                    <span class="list1">序号</span>
+                    <span class="list2">车辆编号</span>
+                    <span class="list3">驾驶员</span>
+                    <span class="list4">牌照有效期</span>
+                    <span class="list5">进出时间</span>
+                    <span class="list6">车辆是否允许通过</span>
+                </li>
+            </ul>
+            <ul class="line"></ul>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    function isFF() {
+        return navigator.userAgent.indexOf("Firefox") != -1;
+    }
+
+    function isChrome() {
+        return navigator.userAgent.indexOf("Chrome") > -1;
+    }
+
+    function getList() {
+        $(".line").html("");
+        $.ajax({
+            // "url": "http://192.168.0.222:8080/car-management/carMaintain/screen.action",
+            "url": "../json/data.json",
+            "type": "get",
+            "success": function(res) {
+                if (res.count == 0) {
+                    alert("未检索到维修车辆");
+                    return;
+                }
+                console.log(res);
+                $(".maintain_countCar").html(res.count);
+                $(".maintain_completeCar").html(res.complete);
+                $(".maintain_currentCar").html(res.current);
+                $(".maintain_queueCar").html(res.queue);
+                // ----------------------------------------------------------------------------------------------------------------------------------
+                if (isFF() || isChrome()) {
+                    console.log($(document.body).width());
+                    if ($(document.body).width() >= 3800) {
+                        console.log($(document.body).width());
+                        $("ul.line li span").css("fontSize", "40px");
+                        $("ul.title li span").css("fontSize", "48px");
+                        $("ul.title").css("margin-bottom", "7px");
+                        $("ul.line li").css({
+                            "border-bottom-width": "5px",
+                            "border-bottom-width": "5px"
+                        });
+                    }
+                }
+                //-----------------------------------------------------------------------------------------------------------------------------------
+                // var obj = res;
+                var screenHtml = "";
+                var lunbo = "";
+                var classname = "";
+                var obj = res.data;
+                if (obj == null) {
+                    return;
+                }
+                console.log(obj);
+                var linum = "";
+                for (var i = 0; i < obj.length; i++) {
+                    var a = "";
+                    if (obj[i].status == null) {
+                        a = '';
+                    } else if (obj[i].status == "2") {
+                        a = '<span style="color:#dd1431;width:100%;weight:bold;">禁止通过</span>';
+                    } else if (obj[i].status == "1") {
+                        a = '<span style="color:#1bcbac;width:100%;weight:bold;">允许通过</span>';
+                    } else if (obj[i].status == "3") {
+                        a = '<span style="color:#dd1431;width:100%;weight:bold;">禁止通过</span>';
+                    } else {
+                        a = '<span>已完成</span>';
+                    }
+                    if (obj[i].operator == null) {
+                        obj[i].operator = "--";
+                    }
+                    if (obj[i].park == null) {
+                        obj[i].park = "--";
+                    }
+
+                    if (i == 0) {
+                        activename = "active";
+                    } else {
+                        activename = "";
+                    }
+                    index = i + 1;
+                    screenHtml += '<li style="margin-top:0px;"><span class="list1">' + index +
+                        '</span><span class="list2 ' + classname + '">' + obj[i].vSn + '</span><span class="list3">' + obj[i].operator +
+                        '</span><span class="list4">' + obj[i].data +
+                        '</span><span class="list5">' + obj[i].data + '</span>' +
+                        '</span><span class="list6">' + a + '</span></li>';
+                }
+                $(".line").html(screenHtml);
+            },
+            "error": function(res) {
+                console.log(res);
+            }
+        })
+    }
+    getList();
+
+    setInterval(function() {
+        // getList();
+    }, 3000); //1小时刷新一次 维修大屏列表和 百分比
+    var viewFullScreen = document.getElementById("btn");
+    if (viewFullScreen) {
+        viewFullScreen.addEventListener("click", function() {
+            var docElm = document.documentElement;
+            if (docElm.requestFullscreen) {
+                docElm.requestFullscreen();
+            } else if (docElm.msRequestFullscreen) {
+                docElm = document.body; //overwrite the element (for IE) 
+                docElm.msRequestFullscreen();
+            } else if (docElm.mozRequestFullScreen) {
+                docElm.mozRequestFullScreen();
+            } else if (docElm.webkitRequestFullScreen) {
+                docElm.webkitRequestFullScreen();
+            }
+        }, false);
+    }
+</script>
+
+</html>
