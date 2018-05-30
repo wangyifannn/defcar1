@@ -752,7 +752,8 @@ function getcnidSolve(url, boxname, btnname) {
                     }
                 }
             }
-            if (boxname == "#bomCheckForm .bomcheck_itembox") {
+            console.log("boxname=" + boxname);
+            if (boxname == "#bomCheckForm .bomcheck_itembox" || btnname == "up_bchek_btn") {
                 checkboxs += "<div class='audit_fot check_user'><span class='operator'>申请人：王宇" + "</span><span class='date'>申请日期：2019-20-22</span></div>";
             }
             checkboxs += "<div class='audit_fot check_user'><span class='operator'>检查人：王宇" + "</span><span class='date'>检查日期：2019-20-22</span></div>";

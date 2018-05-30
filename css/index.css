@@ -419,13 +419,11 @@
         }
         
         .audit_fot {
-            margin-top: 10px;
-            margin-bottom: 33px;
             text-align: right;
         }
         
         .audit_fot span:last-child {
-            margin: 10px 0px 20px 20px;
+            margin: 10px 0px 0px 20px;
         }
         /*start 楼层导航*/
         
