@@ -136,11 +136,14 @@ function bomApply(name, vSn, btnname) {
             }
             checkboxs += '<div class="form-group">' +
                 '<div class="form_btngroup clearfix">' +
-                '<button type="button" data-dismiss="" aria-label="" class="btn btn-default pull-left btn-primary ' + btnname + '">提交</button>' +
-                '<button type="button" class="btn btn-default btn-primary pull-right" data-dismiss="modal">取消</button>' +
+                '<button type="button" class="btn btn-default pull-left btn-primary ' + btnname + '">提交</button>' +
+                '<button type="button" class="btn btn-default btn-primary pull-right canceledit_btn">取消</button>' +
                 '</div>' +
                 '</div>';
             $(name).html(checkboxs);
+            $(".canceledit_btn").click(function() {
+                $(this).parent().hide();
+            })
         }
     })
 
