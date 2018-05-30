@@ -177,3 +177,16 @@ function bomApply(name, vSn, btnname) {
 creatForm(addcarInfo, "#carTypeIn .cartypein_apply", "sub_cartypein");
 ToolRecordApply("#carTypeIn .rd_apply", "", "toolapply_btn");
 bomApply("#carTypeIn .bom_apply", $("#carTypeIn .vSn").val(), "bomapply_btn");
+
+var typein_edit_btn = $('#carTypeIn .form_subject .pull-right');
+var typein_form_btngroups = $('#carTypeIn .form_btngroup');
+var form_btngroup_cancel = $('#carTypeIn .form_btngroup .pull-right');
+for (var m = 0; m < typein_edit_btn.length; m++) {
+    typein_edit_btn[m].index = m;
+    typein_edit_btn[m].onclick = function() {
+        $('#carTypeIn .form_btngroup').eq(this.index).show() // $('.form_btngroup').hide();
+    };
+}
+$('#carTypeIn .form_btngroup .pull-right').click(function() {
+    $(this).parent().hide();
+})
