@@ -390,14 +390,17 @@ ul.mydrop_menu {
 
 ul.mydrop_menu>li>a:link {
     padding: 0px;
+    background: transparent;
 }
 
 ul.mydrop_menu>li>a:visited {
     padding: 0px;
+    background: transparent;
 }
 
 ul.mydrop_menu>li>a:active {
     padding: 0px;
+    background: transparent;
 }
 
 ul.mydrop_menu li button {
