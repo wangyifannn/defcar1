@@ -11,7 +11,7 @@ var addcarInfo = [
     { "name": "发动机号", "type": "text", "inputName": "engineNumber", "must": "*" },
     { "name": "联系电话", "type": "text", "inputName": "contactNumber", "must": "" },
     { "name": "发动机型号", "type": "text", "inputName": "engineType", "must": "" },
-    { "name": "变速箱油规格", "type": "text", "inputName": "GBTS", "must": "" },
+    { "name": "车管", "type": "text", "inputName": "carcolor", "must": "" },
     { "name": "发动机排量（L）", "type": "text", "inputName": "engineCapacity", "must": "" },
     { "name": "燃油规则", "type": "text", "inputName": "FuelType", "must": "" },
     {
@@ -21,7 +21,7 @@ var addcarInfo = [
         "must": "",
         "option": [{ "name": "成存玉组" }, { "name": "方伟新组" }, { "name": "刘琼组" }, { "name": "桂旭阳组" }, { "name": "柴油及其他组" }]
     },
-    { "name": "后轮胎压力", "type": "text", "inputName": "reaTireP", "must": "" },
+    { "name": "变速箱油规格", "type": "text", "inputName": "GBTS", "must": "" },
     { "name": "座位容纳", "type": "text", "inputName": "makeTime", "must": "" },
     { "name": "机油规格", "type": "text", "inputName": "oilspecification", "must": "" },
     { "name": "车辆吨位", "type": "text", "inputName": "dunwei", "must": "" },
@@ -29,7 +29,7 @@ var addcarInfo = [
     { "name": "车辆型号", "type": "text", "inputName": "vCarType", "must": "" },
     { "name": "前轮胎压力", "type": "text", "inputName": "frontTireP", "must": "" },
     { "name": "车辆颜色", "type": "text", "inputName": "carcolor", "must": "" },
-    { "name": "车管", "type": "text", "inputName": "carcolor", "must": "" },
+    { "name": "后轮胎压力", "type": "text", "inputName": "reaTireP", "must": "" },
     { "name": "车辆价值", "type": "text", "inputName": "carcolor", "must": "" },
     { "name": "制作日期", "type": "text", "inputName": "makeTime", "must": "" },
     { "name": "车辆图片", "type": "file", "inputName": "iccard", "must": "" },
