@@ -183,7 +183,7 @@ function bomApply(name, vSn, btnname) {
     })
 }
 // loadCarGroup();
-creatForm(addcarInfo, "#carTypeIn .cartypein_apply_detail", "sub_cartypein");
+creatForm(addcarInfo, "#carTypeIn .cartypein_apply", "sub_cartypein");
 
 ToolRecordApply("#carTypeIn .rd_apply", "", "toolapply_btn");
 bomApply("#carTypeIn .bom_apply", $("#carTypeIn .vSn").val(), "bomapply_btn");
