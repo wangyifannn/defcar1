@@ -19,8 +19,8 @@ function loadDriverList() {
         sortOrder: "asc", //排序方式
         sidePagination: "server", //分页方式：client客户端分页，server服务端分页（*）
         pageNumber: 1, //初始化加载第一页，默认第一页
-        pageSize: 5, //每页的记录行数（*）
-        pageList: [5, 10, 50, 100], //可供选择的每页的行数（*）
+        pageSize: 10, //每页的记录行数（*）
+        pageList: [10, 20, 30, 40, 50], //可供选择的每页的行数（*）
         search: true, //是否搜索查询
         showColumns: true, //是否显示所有的列
         showRefresh: false, //是否显示刷新按钮
@@ -208,7 +208,6 @@ window.driveroperateEvents = {
         deletAll(delrow, "approve_all");
     },
     'click #btn_drivercancelimpower': function(e, value, row, index) { //取消授权、禁用
-        // window.location.hash = "driverid=" + row.id + "&pageindex=" + index;
         var delrow = [];
         delrow.push(row);
         deletAll(delrow, "cancelimpower");
@@ -265,7 +264,6 @@ var addDrverInfo = [
 ];
 // 授权模态框
 var approveInfo = [
-    { "name": "姓名", "type": "text", "inputName": "name", "must": "*" },
     { "name": "授权起始日", "type": "today-date", "inputName": "startTime", "must": "*" },
     { "name": "授权终止日", "type": "end-date", "inputName": "endTime", "must": "*" },
 ];

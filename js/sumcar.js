@@ -3,14 +3,7 @@ function loadsumCarList() {
         url: 'https://wangyifannn.github.io/newdefcar/json/driverList.json',
         // url: 'http://localhost/car/defcar/json/driverList.json',
         // dataType: "json", //数据类型
-        // method: 'GET', //请求方式（*）
         dataType: 'json',
-        // ajaxOptions: {
-        //     xhrFields: { //跨域
-        //         withCredentials: true
-        //     },
-        //     crossDomain: true
-        // },
         striped: true, //是否显示行间隔色
         toggle: "table",
         toolbar: "sumcarTable_toolbar",
@@ -19,7 +12,7 @@ function loadsumCarList() {
         sidePagination: "server", //分页方式：client客户端分页，server服务端分页（*）
         pageNumber: 1, //初始化加载第一页，默认第一页
         pageSize: 5, //每页的记录行数（*）
-        pageList: [5, 10, 50, 100], //可供选择的每页的行数（*）
+        pageList: [10, 25, 50], //可供选择的每页的行数（*）
         search: true, //是否搜索查询
         showColumns: true, //是否显示所有的列
         showRefresh: false, //是否显示刷新按钮
@@ -97,13 +90,26 @@ function loadsumCarList() {
 
 function sumcaroperateFormatter(value, row, index) {
     return [
+        '<button type="button" id="Insurance_typein" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">保险录入</button>',
         '<a href="#carDetail" data-toggle="tab"><button type="button" id="sumcar_detail" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">详情</button></a>',
-        // '<button type="button" id="audit_btn" class="my_btn btn btn-default  btn-sm" style="margin-right:15px;">编辑</button>',
     ].join('');
 }
 
 window.sumcaroperateEvents = {
-    'click #sumcar_detail': function(e, value, row, index) { //，
+    'click #Insurance_typein': function(e, value, row, index) { //录入保险
+        $("#add_model").modal();
+        $("#add_model #myModalLabel").html("保险录入");
+        creatForm(InsuranceInfo, "#add_model .modal-body form", "Insurance_typein_btn");
+        $("#add_model .modal-body .vSn").val(row.vSn);
+        $(".Insurance_typein_btn").click(function() { //完成维修
+            var sub_data = $("#add_model .modal-body form").serialize();
+            var sub_url = allurl + "/car-management/vehicle/add.json";
+            console.log(sub_data);
+            $(this).attr({ "data-dismiss": "modal", "aria-label": "Close" });
+            subData(sub_url, sub_data, "post", "sub_Insurance");
+        });
+    },
+    'click #sumcar_detail': function(e, value, row, index) {
         window.location.hash = "carDetail";
         $(".sumCarList").removeClass("active");
     }

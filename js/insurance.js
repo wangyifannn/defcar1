@@ -1,16 +1,8 @@
 function loadInsuranceList() {
     $("#InsTable").bootstrapTable('destroy').bootstrapTable({
         url: 'https://wangyifannn.github.io/newdefcar/json/driverList.json',
-        // url: 'http://localhost/car/defcar/json/driverList.json',
-        // dataType: "json", //数据类型
-        // method: 'GET', //请求方式（*）
+        // url: 'http://localhost/car/defcar/json/ins.json',
         dataType: 'json',
-        // ajaxOptions: {
-        //     xhrFields: { //跨域
-        //         withCredentials: true
-        //     },
-        //     crossDomain: true
-        // },
         striped: true, //是否显示行间隔色
         toggle: "table",
         toolbar: "InsTable_toolbar",
@@ -34,9 +26,9 @@ function loadInsuranceList() {
         exportDataType: "basic",
         exportOptions: {
             ignoreColumn: [0, 8], //忽略某一列的索引  
-            fileName: '测试车辆-保险', //文件名称设置  
+            fileName: '测试车辆-保险申请列表', //文件名称设置  
             worksheetName: 'sheet1', //表格工作区名称  
-            tableName: '测试车辆-保险',
+            tableName: '测试车辆-保险申请列表',
             excelstyles: ['background-color', 'color', 'font-size', 'font-weight']
                 // onMsoNumberFormat: DoOnMsoNumberFormat
         },
@@ -63,22 +55,29 @@ function loadInsuranceList() {
         },
         columns: [
             [{
-                "title": "测试车辆-保险列表",
+                "title": "测试车辆-保险申请列表",
                 "halign": "center",
                 "align": "center",
-                "colspan": 12
+                "colspan": 19
             }],
             [{ field: "checkbox", title: "全选", checkbox: true, align: 'center' },
                 { field: 'index', title: "序号", valign: "middle", align: "center", width: "5%", formatter: function(value, row, index) { return index + 1; } },
                 { field: "vSn", title: "车辆编号", align: 'center' },
-                { field: "name", title: "德尔福编号", align: 'center' },
-                { field: "name", title: "车架号", align: 'center' },
+                { field: "telephone", title: "项目编号", align: 'center' },
+                { field: "name", title: "车辆名称", align: 'center' },
+                { field: "name", title: "车辆型号", align: 'center' },
+                { field: "Employeerange", title: "保险期限", align: 'center', formatter: function(value, row, index) { return value + "年"; } },
                 { field: "name", title: "发动机号", align: 'center' },
-                { field: "name", title: "厂牌型号（车）", align: 'center' },
-                { field: "name", title: "保单号", align: 'center' },
-                { field: "name", title: "保险起始日", align: 'center' },
-                { field: "name", title: "保险终止日", align: 'center' },
-                { field: "name", title: "厂牌型号（保险）", align: 'center' },
+                { field: "name", title: "车架号", align: 'center' },
+                { field: "name", title: "车辆类型", align: 'center' },
+                { field: "name", title: "座纳", align: 'center' },
+                { field: "name", title: "价值", align: 'center' },
+                { field: "name", title: "排量", align: 'center' },
+                { field: "name", title: "吨位", align: 'center' },
+                { field: "name", title: "负责工程师", align: 'center' },
+                { field: "name", title: "申请人", align: 'center' },
+                { field: "applydate", title: "申请日期", align: 'center' },
+                { field: "name", title: "备注", align: 'center' },
                 { field: 'operate', title: '操作', align: 'center', events: InsoperateEvents, formatter: InsoperateFormatter }
             ]
         ]
@@ -87,8 +86,7 @@ function loadInsuranceList() {
 
 function InsoperateFormatter(value, row, index) {
     return [
-        '<button type="button" id="Insurance_typein" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">录入</button>',
-        '<button type="button" id="Renewal_btn" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">续保</button>'
+        '<button type="button" id="Renewal_btn" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">续保申请</button>'
     ].join('');
 }
 // 临牌申请
@@ -106,22 +104,10 @@ $("#plate_apply").click(function() {
     });
 })
 window.InsoperateEvents = {
-    'click #Insurance_typein': function(e, value, row, index) { //录入保险
-        $("#add_model").modal();
-        $("#add_model #myModalLabel").html("保险录入");
-        creatForm(InsuranceInfo, "#add_model .modal-body form", "Insurance_typein_btn");
-        $("#add_model .modal-body .vSn").val(row.vSn);
-        $(".Insurance_typein_btn").click(function() { //完成维修
-            var sub_data = $("#add_model .modal-body form").serialize();
-            var sub_url = allurl + "/car-management/vehicle/add.json";
-            console.log(sub_data);
-            $(this).attr({ "data-dismiss": "modal", "aria-label": "Close" });
-            subData(sub_url, sub_data, "post", "sub_Insurance");
-        });
-    },
     'click #Renewal_btn': function(e, value, row, index) { //续保
-        // var sub_url = allurl + "/car-management/vehicle/add.json";
-        // subData(sub_url, sub_data, "post", "sub_Renewal");
+        var Ins_Arr = [];
+        Ins_Arr.push(row);
+        deletAll(Ins_Arr, "Ins_apply");
     }
 };
 

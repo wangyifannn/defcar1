@@ -139,11 +139,7 @@ function caroperateFormatter(value, row, index) {
         '<span class="sr-only">切换下拉菜单</span>' +
         '</button>' +
         '<ul class="dropdown-menu mydrop_menu" role="menu">' +
-        carbtns + // '<li><a href="#"><button>功能</button></a></li>' +
-        // '<li><a href="#">另一个功能</a></li>' +
-        // '<li><a href="#">其他</a></li>' +
-        // '<li class="divider"></li>' +
-        // '<li><a href="#">分离的链接</a></li>' +
+        carbtns +
         '</ul>' +
         '</div>'
     ].join('');
@@ -211,4 +207,8 @@ var auditInfo = [
         "option": [{ "name": "是" }, { "name": "否" }]
     },
     { "name": "审核备注", "type": "text", "inputName": "remark", "must": "" },
+];
+var InsApplyInfo = [
+    { "name": "保险期限", "type": "text", "inputName": "insrange", "must": "年*" },
+    { "name": "保险备注", "type": "text", "inputName": "remark", "must": "" },
 ];

@@ -172,10 +172,10 @@ $.ajax({
         });
         $(".user").click(function() {
             //----解决用户列表点解添加按钮，再点击角色管理等其他选项，再回来点击用户管理时页面失效问题------------------------------------------------------
-            $("#user .form-horizontal").hide();
-            $("#user_rightbox").show();
-            loadrolesList(".user_check_box", "rolepid");
-            loadUserList();
+            // $("#user .form-horizontal").hide();
+            // $("#user_rightbox").show();
+            // loadrolesList(".user_check_box", "rolepid");
+            // loadUserList();
         });
         $(".menu").click(function() {
             $("#menu .form-horizontal").hide();

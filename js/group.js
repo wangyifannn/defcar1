@@ -1,4 +1,4 @@
-// 审核成功和失败列表
+// 分组列表
 function createTable(boxname, toolbarid, res,
     row1, row2, ifpage, row1name, row2name,
     ifoperate, userOperateEventsDel, userOperateFormatterDel, pagetype, tit) {
@@ -47,16 +47,21 @@ function createTable(boxname, toolbarid, res,
 }
 // 车辆分组列表
 function loadCarGroup() {
-    var url = allurl + "/car-management/group/find.action";
+    var url = allurl + "/car-management/group/getGroup.action";
     $.ajax({
         "url": url,
         "type": "get",
         "success": function(res) {
-
             $('#cargroupTable').bootstrapTable('destroy');
             createTable("#cargroupTable", "#cargroup_toolbar", res,
-                "id", "name", true, "分组编号", "分组编号",
-                true, carGroupOperateEvents, carGroupOperateFormatter, "client", "车辆分组列表")
+                "id", "name", true, "分组编号", "分组名称",
+                true, carGroupOperateEvents, carGroupOperateFormatter, "client", "车辆分组列表");
+            addcarInfo[19].option = [];
+            for (var i = 0; i < res.length; i++) {
+                addcarInfo[19].option.push({ id: res[i].id, name: res[i].name, remark: res[i].remark })
+            }
+            console.log(addcarInfo);
+            creatForm(addcarInfo, "#carTypeIn .cartypein_apply", "sub_cartypein");
         },
         "error": function(res) {
             console.log(res);
@@ -72,15 +77,15 @@ function loadDriverGroup() {
         contentType: 'application/json;charset=UTF-8', //contentType很重要 
         crossDomain: true,
         "success": function(res) {
-            var resstring = JSON.stringify(res);
+            $('#drivergroupTable').bootstrapTable('destroy');
+            createTable("#drivergroupTable", "#drivergroupTable_toolbar", res,
+                "id", "name", true, "分组编号", "分组名称",
+                true, driverGroupOperateEvents, driverGroupOperateFormatter, "client", "驾驶员分组列表");
             addDrverInfo[4].option = [];
             for (var i = 0; i < res.length; i++) {
                 addDrverInfo[4].option.push({ id: res[i].id, name: res[i].name, remark: res[i].remark })
             }
-            $('#drivergroupTable').bootstrapTable('destroy');
-            createTable("#drivergroupTable", "#drivergroupTable_toolbar", res,
-                "id", "name", true, "分组编号", "分组编号",
-                true, driverGroupOperateEvents, driverGroupOperateFormatter, "client", "驾驶员分组列表")
+
         },
         "error": function(res) {
             console.log(res);
@@ -137,7 +142,7 @@ window.carGroupOperateEvents = {
         $(".editcarGroup_btn").click(function() {
             var sub_data = $("#add_model .modal-body form").serialize();
             sub_data = sub_data + "&id=" + row.id;
-            var sub_url = allurl + "/car-management/group/updateGroup.action";
+            var sub_url = allurl + "/car-management/group/update.action";
             $(this).attr({ "data-dismiss": "modal", "aria-label": "Close" });
             subData(sub_url, sub_data, "post", "editcarGroup_btn");
         })
@@ -146,6 +151,10 @@ window.carGroupOperateEvents = {
 // 新增车辆分组
 var addGroupInfo = [
     { "name": "分组名称", "type": "text", "inputName": "name", "must": "*" },
+    { "name": "备注", "type": "text", "inputName": "remark", "must": "" }
+];
+var addemployeeInfo = [
+    { "name": "操作员", "type": "text", "inputName": "name", "must": "*" },
     { "name": "备注", "type": "text", "inputName": "remark", "must": "" }
 ];
 
@@ -169,5 +178,60 @@ $("#add_drivergroup_btn").click(function() {
         var sub_url = allurl + "/car-management/driver/group/add.action";
         $(this).attr({ "data-dismiss": "modal", "aria-label": "Close" });
         subData(sub_url, sub_data, "post", "adddrivergroup");
+    })
+})
+findEmployee();
+// 维修操作员管理
+function findEmployee() {
+    $.ajax({
+        url: "http://192.168.0.222:8080/car-management/carmaintain/employee.action",
+        success: function(res) {
+            dividedInfo[2].option = [];
+            for (var i = 0; i < res.length; i++) {
+                dividedInfo[2].option.push({ id: res[i].id, name: res[i].name, remark: res[i].remark })
+                $('#employeeTable').bootstrapTable('destroy');
+                createTable("#employeeTable", "#employee_toolbar", res,
+                    "id", "name", true, "操作员编号", "操作员名称",
+                    true, employOperateEvents, employOperateFormatter, "client", "维修操作员列表");
+            }
+        }
+    })
+}
+
+function employOperateFormatter(value, row, index) {
+    return [
+        '<button type="button" id="del_employ" class="RoleOfA btn btn-default  btn-sm" style="margin-right:15px;">删除</button>',
+        '<button type="button" id="update_employ" class="RoleOfB btn btn-default  btn-sm" style="margin-right:15px;">修改</button>'
+    ].join('');
+}
+window.employOperateEvents = {
+    'click #del_employ': function(e, value, row, index) {
+        var delrow = [];
+        delrow.push(row);
+        deletAll(delrow, "del_employ");
+    },
+    'click #update_employ': function(e, value, row, index) {
+        $("#add_model").modal();
+        $("#add_model #myModalLabel").html("驾驶员分组修改");
+        creatForm(addGroupInfo, "#add_model .modal-body form", "update_employ");
+        showData("#add_model .modal-body form", row); // 编辑时数据回显
+        $(".update_employ").click(function() {
+            var sub_data = $("#add_model .modal-body form").serialize();
+            sub_data = sub_data + "&id=" + row.id;
+            var sub_url = allurl + "/car-management/driver/group/updateGroup.action";
+            $(this).attr({ "data-dismiss": "modal", "aria-label": "Close" });
+            subData(sub_url, sub_data, "post", "update_employ");
+        })
+    }
+};
+$("#add_employee_btn").click(function() {
+    $("#add_model").modal();
+    $("#add_model #myModalLabel").html("添加维修操作员");
+    creatForm(addemployeeInfo, "#add_model .modal-body form", "sub_add_employee");
+    $(".sub_add_employee").click(function() {
+        var sub_data = $("#add_model .modal-body form").serialize();
+        var sub_url = allurl + "/car-management/carmaintain/addEmployee.action";
+        $(this).attr({ "data-dismiss": "modal", "aria-label": "Close" });
+        subData(sub_url, sub_data, "post", "addemployee");
     })
 })

@@ -362,7 +362,7 @@
                 <!--s 维修管理-->
                 <!--维修车间大屏-->
                 <div class="tab-pane" id="maintainScreen">
-                    <iframe class="iframebgs" src="./html/screen.html" width="100%" height="850px" scrolling="no" frameborder="no" border="0"></iframe>
+                    <!--<iframe class="iframebgs" src="./html/screen.html" width="100%" height="850px" scrolling="no" frameborder="no" border="0"></iframe>-->
                 </div>
                 <!--维修列表-->
                 <div class="tab-pane" id="maintainList">
@@ -466,7 +466,8 @@
                 <div class="tab-pane" id="group">
                     <div class="form_subject">
                         <i class="iconfont icon-cheliangguanli"></i> <a href="#cargroup" data-toggle="tab" style="margin-right:30px;">车辆分组</a>
-                        <i class="iconfont icon-Viconzq-"></i> <a href="#drivergroup" data-toggle="tab">驾驶员分组</a>
+                        <i class="iconfont icon-Viconzq-"></i> <a href="#drivergroup" data-toggle="tab" style="margin-right:30px;">驾驶员分组</a>
+                        <i class="iconfont icon-weixiu"></i> <a href="#employee" data-toggle="tab">维修操作员</a>
                     </div>
                     <div class="tab-pane active" id="cargroup">
                         <div class="table-responsive">
@@ -485,6 +486,17 @@
                                 <div id="drivergroup_toolbar" class="btn-group">
                                     <button id="add_drivergroup_btn" type="button" class="btn btn-default">
                                           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增驾驶员分组
+                                    </button>
+                                </div>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="employee">
+                        <div class="table-responsive">
+                            <table id="employeeTable">
+                                <div id="employee_toolbar" class="btn-group">
+                                    <button id="add_employee_btn" type="button" class="btn btn-default">
+                                          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增操作员
                                     </button>
                                 </div>
                             </table>
@@ -1097,15 +1109,12 @@
 <!--模态框-->
 <script src="https://cdn.bootcss.com/toastr.js/latest/toastr.min.js"></script>
 <script type="text/javascript" src="./assets/js/laydate.js" charset="utf-8"></script>
-<!--<script type="text/javascript" src="./assets/js/iconfont.js" charset="utf-8"></script>-->
-<!--<script type="text/javascript" src="https://at.alicdn.com/t/font_582527_dzl8iyd8fp7xecdi.js" charset="utf-8"></script>-->
-
 <!--<script type="text/javascript" src="./assets/js/custom.js" charset="utf-8"></script>-->
 <!--<script type="text/javascript" src="./js/index.js" charset="utf-8"></script>-->
 <!--<script type="text/javascript" src="./js/test.js" charset="utf-8"></script>-->
 <!--<script type="text/javascript" src="./js/rightstable.js" charset="utf-8"></script>-->
 <!--<script type="text/javascript" src="./js/roletable.js" charset="utf-8"></script>-->
-<!--<script type="text/javascript" src="./js/usertable.js" charset="utf-8"></script>-->
+<script type="text/javascript" src="./js/usertable.js" charset="utf-8"></script>
 <!--<script type="text/javascript" src="./js/menutable.js" charset="utf-8"></script>-->
 <!--<script type="text/javascript" src="./js/audittable.js" charset="utf-8"></script>-->
 <!--<script type="text/javascript" src="./js/drivertable.js" charset="utf-8"></script>-->
@@ -1119,6 +1128,7 @@
 
 <script type="text/javascript" src="./js/menu.js" charset="utf-8"></script>
 <script type="text/javascript" src="./js/common.js" charset="utf-8"></script>
+<script type="text/javascript" src="./js/group.js" charset="utf-8"></script>
 <script type="text/javascript" src="./js/driver.js" charset="utf-8"></script>
 <script type="text/javascript" src="./js/carchecks.js" charset="utf-8"></script>
 <script type="text/javascript" src="./js/car.js" charset="utf-8"></script>
@@ -1129,7 +1139,6 @@
 <script type="text/javascript" src="./js/insurance.js" charset="utf-8"></script>
 <script type="text/javascript" src="./js/sumcar.js" charset="utf-8"></script>
 <script type="text/javascript" src="./js/maintain.js" charset="utf-8"></script>
-<script type="text/javascript" src="./js/group.js" charset="utf-8"></script>
 
 <!--<script type="text/javascript" src="./js/car.js" charset="utf-8"></script>-->
 <!--<script type="text/javascript" src="./js/maintain.js" charset="utf-8"></script>-->

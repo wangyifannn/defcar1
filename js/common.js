@@ -30,6 +30,15 @@ lay('.end-date').each(function() {
         theme: '#041473'
     });
 });
+lay('.end-3date').each(function() {
+    laydate.render({
+        elem: this,
+        trigger: 'click',
+        format: 'yyyy-MM-dd',
+        value: date3end,
+        theme: '#041473'
+    });
+});
 var allurl = window.allurl = "http://192.168.0.222:8080";
 /**
  * 获取hash参数
@@ -166,6 +175,7 @@ function Invert(btn, name) {
         $(btn).attr("checked", $subBox.length == $(name + " input[name='checkbox']:checked").length ? true : false);
     });
 }
+
 // 删除所有接口
 function deletAll(a, name) {
     var delArr = [];
@@ -183,20 +193,36 @@ function deletAll(a, name) {
         delata = {
             "ids": delString
         };
-
         if (name == "editcarInfo") { //编辑更新车辆信息
             // 编辑车辆信息
             $("#add_model").modal();
             $("#add_model #myModalLabel").html("编辑车辆信息");
             creatForm(addcarInfo, "#add_model .modal-body .form-horizontal", "subcar_btn");
         } else if (name == "Ins_apply") { //保险申请
-            $("#del_model").modal();
-            $("#del_model .text-center").html('<i class="glyphicon glyphicon-thumbs-up"></i>&nbsp;&nbsp;<span>确认申请吗？</span>');
-            $(".modal_del").click(function() {
-                console.log(delata);
+            var approveInsArr = [];
+            for (var i = 0; i < a.length; i++) {
+                approveInsArr.push(a[i].id);
+            }　
+            approveInsString = approveInsArr.join(","); //b="0-1-2-3-4-5"   
+            $("#add_model").modal();
+            $("#add_model #myModalLabel").html("保险申请");
+            creatForm(InsApplyInfo, "#add_model .modal-body form", "approve_btn");
+            var confirmInfo =
+                '<div class="confirm_group">' +
+                '<span class="confirm_name">请确认您申请的车辆编号是：</span><span class="confirm_val" style="color:green;weight:bolder;">1234</span>' +
+                '</div>';
+            $("#add_model .modal-body form").html(confirmInfo + $("#add_model .modal-body").html());
+            $("#add_model .modal-body .confirm_val").html(nameString);
+            $(".approve_btn").click(function() { //点击确认
+                var approveInsobj = {
+                    "insRange": $("#add_model .modal-body" + ' input[name="' + "insRange" + '"]').val(),
+                    "remark": $("#add_model .modal-body" + ' input[name="' + "remark" + '"]').val(),
+                    ids: approveInsString
+                };
+                console.log(approveobj);
+                delPort(allurl + "/car-management/driver/authorized.action", approveInsobj, "post",
+                    name, "申请保险", "申请保险失败", "申请保险成功");
                 $(this).attr({ "data-dismiss": "modal", "aria-label": "Close" });
-                delPort(allurl + "/car-management/terminal/delete.action", delata, "get", name,
-                    "申请保险", "申请保险失败", "申请保险成功");
             })
         } else if (name == "driverdel") { //删除驾驶员
             $("#del_model").modal();
@@ -223,7 +249,13 @@ function deletAll(a, name) {
             $("#add_model").modal();
             $("#add_model #myModalLabel").html("驾驶员授权");
             creatForm(approveInfo, "#add_model .modal-body form", "approve_btn");
-            $("#add_model .modal-body .name").val(nameString);
+            var confirmInfo = '<div class="form-group">' +
+                '<div class="confirm_group">' +
+                '<span class="confirm_name">请确认您授权的驾驶员是：</span><span class="confirm_val" style="color:green;weight:bolder;">1234</span>' +
+                '</div>' +
+                '</div>';
+            $("#add_model .modal-body form").html(confirmInfo + $("#add_model .modal-body").html());
+            $("#add_model .modal-body .confirm_val").html(nameString);
             $(".approve_btn").click(function() { //点击确认
                 var approveobj = {
                     "startTime": $("#add_model .modal-body" + ' input[name="' + "startTime" + '"]').val(),
@@ -246,8 +278,15 @@ function deletAll(a, name) {
             $("#del_model").modal();
             $(".modal_del").click(function() {
                 $(this).attr({ "data-dismiss": "modal", "aria-label": "Close" });
-                delPort(allurl + "/car-management/group/deleteGroup.action", delata, "get", name,
+                delPort(allurl + "/car-management/group/delete.action", delata, "get", name,
                     "车辆分组删除", "车辆分组删除失败", "车辆分组删除成功");
+            })
+        } else if (name == "del_employ") { //删除维修操作员
+            $("#del_model").modal();
+            $(".modal_del").click(function() {
+                $(this).attr({ "data-dismiss": "modal", "aria-label": "Close" });
+                delPort(allurl + "/car-management/carmaintain/delEmployee.action", delata, "get", name,
+                    "维修操作员删除", "维修操作员删除失败", "维修操作员删除成功");
             })
         }
     } else {
@@ -277,6 +316,8 @@ function delPort(url, dat, type, name, tit, filToa, sucToa) {
                     loadDriverGroup();
                 } else if (name == "cargroupdel") {
                     loadCarGroup();
+                } else if (name == "del_employ") {
+                    findEmployee();
                 }
             } else {
                 toastr.warning(filToa, tit, messageOpts);
@@ -306,12 +347,14 @@ function subData(url, data, type, name) {
                     loadDriverList();
                 } else if (name == "subcar_btn" || name == "editcar_btn") {
                     console.log("车辆录入")
-                } else if (name == "subMaintainApply_btn") {
-                    console.log("维修申请");
+                } else if (name == "subMaintainApply_btn" || name == "subdivided_btn" || name == "finish_btn") {
+                    loadMaintainList();
                 } else if (name == "addcargroup" || name == "editcarGroup_btn") {
                     loadCarGroup();
                 } else if (name == "adddrivergroup" || name == "editDrivergroup_btn") {
                     loadDriverGroup();
+                } else if (name == "addemployee" || name == "update_employ") {
+                    findEmployee();
                 }
             } else {
                 toastr.warning(res.msg, "提示", messageOpts);
