@@ -249,10 +249,9 @@ function deletAll(a, name) {
             $("#add_model").modal();
             $("#add_model #myModalLabel").html("驾驶员授权");
             creatForm(approveInfo, "#add_model .modal-body form", "approve_btn");
-            var confirmInfo = '<div class="form-group">' +
+            var confirmInfo =
                 '<div class="confirm_group">' +
                 '<span class="confirm_name">请确认您授权的驾驶员是：</span><span class="confirm_val" style="color:green;weight:bolder;">1234</span>' +
-                '</div>' +
                 '</div>';
             $("#add_model .modal-body form").html(confirmInfo + $("#add_model .modal-body").html());
             $("#add_model .modal-body .confirm_val").html(nameString);
