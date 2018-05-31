@@ -193,7 +193,7 @@ var form_btngroup_cancel = $('#carTypeIn .form_btngroup .pull-right');
 for (var m = 0; m < typein_edit_btn.length; m++) {
     typein_edit_btn[m].index = m;
     typein_edit_btn[m].onclick = function() {
-        $('#carTypeIn .form_btngroup').eq(this.index).show() // $('.form_btngroup').hide();
+        $('#carTypeIn .form_btngroup').eq(this.index).show()
     };
 }
 $('#carTypeIn .form_btngroup .pull-right').click(function() {
