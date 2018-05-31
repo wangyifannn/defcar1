@@ -68,7 +68,6 @@ function loadCarGroup() {
         }
     });
 }
-creatForm(addcarInfo, "#carTypeIn .cartypein_apply_detail", "sub_cartypein");
 
 // 驾驶员分组列表
 function loadDriverGroup() {
