@@ -26,7 +26,7 @@ var statusobj = [{
 
 $.ajax({
     // "url": "http://localhost/car/defcar/json/menu.json",
-    "url": "https://wangyifannn.github.io/newdefcar/json/menu.json",
+    "url": "https://wangyifannn.github.io/defcar1/json/menu.json",
     "type": "get",
     "data": {},
     // "dataType": "jsonp", //数据类型为jsonp  
