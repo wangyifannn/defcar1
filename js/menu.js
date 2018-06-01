@@ -96,7 +96,6 @@ $.ajax({
         })
         $("#toggle-sidebar").click(function() {
             $(".page-wrapper").toggleClass("toggled");
-            e
         });
         // 分组管理
         $(".group").click(function() {

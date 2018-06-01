@@ -95,8 +95,28 @@
             "childrenMenus": []
         }, {
             "mid": 302,
-            "name": "保险录入",
+            "name": "保险管理",
             "url": "insuranceTypeIn",
+            "priority": "1",
+            "remark": "",
+            "createTime": "2018-04-10",
+            "operator": "admin",
+            "operate_ip": "127.0.0.1",
+            "childrenMenus": []
+        }, {
+            "mid": 303,
+            "name": "车牌管理",
+            "url": "plate",
+            "priority": "1",
+            "remark": "",
+            "createTime": "2018-04-10",
+            "operator": "admin",
+            "operate_ip": "127.0.0.1",
+            "childrenMenus": []
+        }, {
+            "mid": 304,
+            "name": "还车点检",
+            "url": "returncarCheck",
             "priority": "1",
             "remark": "",
             "createTime": "2018-04-10",
@@ -107,16 +127,6 @@
             "mid": 302,
             "name": "车辆总表",
             "url": "sumCarList",
-            "priority": "1",
-            "remark": "",
-            "createTime": "2018-04-10",
-            "operator": "admin",
-            "operate_ip": "127.0.0.1",
-            "childrenMenus": []
-        }, {
-            "mid": 302,
-            "name": "还车点检",
-            "url": "returncarCheck",
             "priority": "1",
             "remark": "",
             "createTime": "2018-04-10",

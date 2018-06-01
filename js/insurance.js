@@ -26,9 +26,9 @@ function loadInsuranceList() {
         exportDataType: "basic",
         exportOptions: {
             ignoreColumn: [0, 8], //忽略某一列的索引  
-            fileName: '测试车辆-保险申请列表', //文件名称设置  
+            fileName: '测试车辆-保险列表', //文件名称设置  
             worksheetName: 'sheet1', //表格工作区名称  
-            tableName: '测试车辆-保险申请列表',
+            tableName: '测试车辆-保险列表',
             excelstyles: ['background-color', 'color', 'font-size', 'font-weight']
                 // onMsoNumberFormat: DoOnMsoNumberFormat
         },
@@ -55,30 +55,35 @@ function loadInsuranceList() {
         },
         columns: [
             [{
-                "title": "测试车辆-保险申请列表",
+                "title": "测试车辆-保险列表",
                 "halign": "center",
                 "align": "center",
-                "colspan": 19
+                "colspan": 24
             }],
-            [{ field: "checkbox", title: "全选", checkbox: true, align: 'center' },
+            [{ field: "checkbox", title: "全选", checkbox: true, align: 'center', valign: "middle" },
                 { field: 'index', title: "序号", valign: "middle", align: "center", width: "5%", formatter: function(value, row, index) { return index + 1; } },
-                { field: "vSn", title: "车辆编号", align: 'center' },
-                { field: "telephone", title: "项目编号", align: 'center' },
-                { field: "name", title: "车辆名称", align: 'center' },
-                { field: "name", title: "车辆型号", align: 'center' },
-                { field: "Employeerange", title: "保险期限", align: 'center', formatter: function(value, row, index) { return value + "年"; } },
-                { field: "name", title: "发动机号", align: 'center' },
-                { field: "name", title: "车架号", align: 'center' },
-                { field: "name", title: "车辆类型", align: 'center' },
-                { field: "name", title: "座纳", align: 'center' },
-                { field: "name", title: "价值", align: 'center' },
-                { field: "name", title: "排量", align: 'center' },
-                { field: "name", title: "吨位", align: 'center' },
-                { field: "name", title: "负责工程师", align: 'center' },
-                { field: "name", title: "申请人", align: 'center' },
-                { field: "applydate", title: "申请日期", align: 'center' },
-                { field: "name", title: "备注", align: 'center' },
-                { field: 'operate', title: '操作', align: 'center', events: InsoperateEvents, formatter: InsoperateFormatter }
+                { field: "vSn", title: "车辆编号", align: 'center', valign: "middle" },
+                { field: "project_sn", title: "项目编号", align: 'center', valign: "middle" },
+                { field: "carName", title: "车辆名称", align: 'center', valign: "middle" },
+                { field: "brandModelone", title: "车辆型号", align: 'center', valign: "middle" },
+                { field: "Employeerange", title: "保险期限", align: 'center', valign: "middle", formatter: function(value, row, index) { return value + "年"; } },
+                { field: "project_sn", title: "发动机号", align: 'center', valign: "middle" },
+                { field: "vin", title: "车架号", align: 'center', valign: "middle" },
+                { field: "brandModelone", title: "车辆类型", align: 'center', valign: "middle" },
+                { field: "seats", title: "座纳", align: 'center', valign: "middle" },
+                { field: "price", title: "价值", align: 'center', valign: "middle" },
+                { field: "engineCapacity", title: "排量", align: 'center', valign: "middle" },
+                { field: "vehicleQuality", title: "吨位", align: 'center', valign: "middle" },
+                { field: "manage", title: "负责工程师", align: 'center', valign: "middle" },
+                { field: "applicant", title: "申请人", align: 'center', valign: "middle" },
+                { field: "makeTime", title: "申请日期", align: 'center', valign: "middle" },
+                { field: "applydate", title: "保单号", align: 'center', valign: "middle" },
+                { field: "applydate", title: "厂牌型号", align: 'center', valign: "middle" },
+                { field: "applydate", title: "起始日", align: 'center', valign: "middle" },
+                { field: "applydate", title: "终止日", align: 'center', valign: "middle" },
+                { field: "remark", title: "备注", align: 'center', valign: "middle" },
+                { field: "applydate", title: "更新日期", align: 'center', valign: "middle" },
+                { field: 'operate', title: '操作', align: 'center', valign: "middle", events: InsoperateEvents, formatter: InsoperateFormatter }
             ]
         ]
     });
@@ -86,24 +91,24 @@ function loadInsuranceList() {
 
 function InsoperateFormatter(value, row, index) {
     return [
-        '<button type="button" id="Renewal_btn" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">续保申请</button>'
+        '<button type="button" id="Insurance_typein" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">录入</button>',
+        '<button type="button" id="Renewal_btn" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">续保</button>'
     ].join('');
 }
-// 临牌申请
-$("#plate_apply").click(function() {
-    $("#add_model").modal();
-    $("#add_model #myModalLabel").html("临牌申请");
-    creatForm(plateInfo, "#add_model .modal-body form", "plate_apply_btn");
-    $("#add_model .modal-body .vSn").val(row.vSn);
-    $(".plate_apply_btn").click(function() { //完成维修
-        var sub_data = $("#add_model .modal-body form").serialize();
-        var sub_url = allurl + "/car-management/vehicle/add.json";
-        console.log(sub_data);
-        $(this).attr({ "data-dismiss": "modal", "aria-label": "Close" });
-        subData(sub_url, sub_data, "post", "sub_plate");
-    });
-})
 window.InsoperateEvents = {
+    'click #Insurance_typein': function(e, value, row, index) { //录入保险
+        $("#add_model").modal();
+        $("#add_model #myModalLabel").html("保险录入");
+        creatForm(InsuranceInfo, "#add_model .modal-body form", "Insurance_typein_btn");
+        $("#add_model .modal-body .vSn").val(row.vSn);
+        $(".Insurance_typein_btn").click(function() { //完成维修
+            var sub_data = $("#add_model .modal-body form").serialize();
+            var sub_url = allurl + "/car-management/vehicle/add.json";
+            console.log(sub_data);
+            $(this).attr({ "data-dismiss": "modal", "aria-label": "Close" });
+            subData(sub_url, sub_data, "post", "sub_Insurance");
+        });
+    },
     'click #Renewal_btn': function(e, value, row, index) { //续保
         var Ins_Arr = [];
         Ins_Arr.push(row);
@@ -111,18 +116,36 @@ window.InsoperateEvents = {
     }
 };
 
-// 临牌录入
-var plateInfo = [
-    { "name": "车辆编号", "type": "text", "inputName": "vSn", "must": "*" },
-    { "name": "临牌起始日", "type": "text", "inputName": "safeCheck", "must": "*" },
-    { "name": "临牌终止日", "type": "text", "inputName": "safeVerify", "must": "" }
-];
 // 保险录入
 var InsuranceInfo = [
     { "name": "车辆编号", "type": "text", "inputName": "vSn", "must": "*" },
     { "name": "保单号", "type": "text", "inputName": "remark", "must": "" },
-    { "name": "保险起始日", "type": "text", "inputName": "safeCheck", "must": "*" },
-    { "name": "保险终止日", "type": "text", "inputName": "safeVerify", "must": "" },
+    { "name": "保险起始日", "type": "today-date", "inputName": "safeCheck", "must": "*" },
     { "name": "厂牌型号（保）", "type": "text", "inputName": "safeVerify", "must": "" },
+    { "name": "保险终止日", "type": "end-date", "inputName": "safeVerify", "must": "" },
     { "name": "保险备注", "type": "text", "inputName": "safeVerify", "must": "" },
 ];
+var yancheInfo = [
+    { "name": "距离保险到期", "type": "text", "inputName": "vSn", "must": "天" },
+    {
+        "name": "保险过期是否验车",
+        "type": "radio",
+        "inputName": "pateend",
+        "must": "*",
+        "option": [{ "name": "是" }, { "name": "否" }]
+    }
+];
+
+$("#yanche_filter").click(function() {
+    $("#add_model").modal();
+    $("#add_model #myModalLabel").html("验车筛选");
+    creatForm(yancheInfo, "#add_model .modal-body form", "yanche_filter_btn");
+    $(".yanche_filter_btn").click(function() {
+
+        var sub_data = $("#add_model .modal-body form").serialize();
+        var sub_url = allurl + "/car-management/vehicle/add.json";
+        console.log(sub_data);
+        $(this).attr({ "data-dismiss": "modal", "aria-label": "Close" });
+        subData(sub_url, sub_data, "post", "yanche_filter");
+    });
+})

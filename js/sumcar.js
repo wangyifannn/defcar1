@@ -69,13 +69,12 @@ function loadsumCarList() {
                 { field: "name", title: "客户", align: 'center' },
                 { field: "name", title: "项目工程师", align: 'center' },
                 { field: "name", title: "车辆状态", align: 'center' },
-                { field: "name", title: "车辆类型", align: 'center' },
                 { field: "name", title: "发动机号", align: 'center' },
                 { field: "name", title: "车架号", align: 'center' },
                 { field: "name", title: "吨位", align: 'center' },
                 { field: "name", title: "接车日期", align: 'center' },
                 { field: "name", title: "还车日期", align: 'center' },
-                { field: "name", title: "厂牌型号（车）", align: 'center' },
+                { field: "name", title: "车辆类型", align: 'center' },
                 { field: "name", title: "厂牌型号（保）", align: 'center' },
                 { field: "name", title: "保单号", align: 'center' },
                 { field: "name", title: "保险起始日", align: 'center' },
@@ -90,25 +89,11 @@ function loadsumCarList() {
 
 function sumcaroperateFormatter(value, row, index) {
     return [
-        '<button type="button" id="Insurance_typein" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">保险录入</button>',
         '<a href="#carDetail" data-toggle="tab"><button type="button" id="sumcar_detail" class="my_btn btn btn-default btn-sm" style="margin-right:15px;">详情</button></a>',
     ].join('');
 }
 
 window.sumcaroperateEvents = {
-    'click #Insurance_typein': function(e, value, row, index) { //录入保险
-        $("#add_model").modal();
-        $("#add_model #myModalLabel").html("保险录入");
-        creatForm(InsuranceInfo, "#add_model .modal-body form", "Insurance_typein_btn");
-        $("#add_model .modal-body .vSn").val(row.vSn);
-        $(".Insurance_typein_btn").click(function() { //完成维修
-            var sub_data = $("#add_model .modal-body form").serialize();
-            var sub_url = allurl + "/car-management/vehicle/add.json";
-            console.log(sub_data);
-            $(this).attr({ "data-dismiss": "modal", "aria-label": "Close" });
-            subData(sub_url, sub_data, "post", "sub_Insurance");
-        });
-    },
     'click #sumcar_detail': function(e, value, row, index) {
         window.location.hash = "carDetail";
         $(".sumCarList").removeClass("active");
@@ -120,15 +105,13 @@ $("#yanche").click(function() {
 });
 $("#sumcar_filter").click(function() {
     $("#filter_model").modal();
-    // $("#filter_model #myModalLabel").html("车辆筛选");
-    // creatFilter(sumcar_filter, "#add_model .modal-body form", "sumcar_filter_btn");
-    // $(".sumcar_filter_btn").click(function() {
-    //     var sub_data = $("#add_model .modal-body form").serialize();
-    //     var sub_url = allurl + "/data-management/vehicle/add.json";
-    //     console.log(sub_data);
-    //     $(this).attr({ "data-dismiss": "modal", "aria-label": "Close" });
-    //     subData(sub_url, sub_data, "post", "sub_sumcar_filter");
-    // });
+    $("#filter_model #myModalLabel").html("车辆筛选");
+    $(".sumcar_filter_btn").click(function() {
+        var sub_data = $("#filter_model .modal-body form").serialize();
+        var sub_url = allurl + "/data-management/vehicle/add.json";
+        $(this).attr({ "data-dismiss": "modal", "aria-label": "Close" });
+        subData(sub_url, sub_data, "post", "sub_sumcar_filter");
+    });
 });
 // 车辆总表查询
 var sumcar_row_filter = [

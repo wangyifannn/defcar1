@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>维修车间大屏</title>
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-3.3.7.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/ping.css" media="screen and (max-width: 2100px)">
+    <!--<link rel="stylesheet" type="text/css" href="../css/screenbig.css" media="screen and (min-width: 2100px) and (max-width: 5148px)">-->
+    <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+    <!--<script type="text/javascript" src="../assets/js/myslideup.js"></script>-->
+    <style>
+        /*声明 WebFont*/
+        
+        @font-face {
+            font-family: 'langqingti';
+            src: url('../assets/langqianti.otf');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'UnidreamLED';
+            src: url('../assets/UnidreamLED.ttf');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        .item {
+            height: 600px;
+            min-width: 600px;
+            border: 1px solid red;
+        }
+        
+        .carousel-indicators li {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body class="shopbody" style="height: 100%;" id="full_mainlist">
+    <div class="shopwhole">
+        <img class="logo" src="../img/logo.png" alt="">
+
+        <h3>
+            <img src="../img/screen/left.png" alt=""> 维修车辆列表
+            <img src="../img/screen/right.png" alt="">
+        </h3>
+        <button id='btn'>全屏显示</button>
+        <div class="workshopList">
+            <ul class="title">
+                <li>
+                    <span class="list1">车辆编号</span>
+                    <span class="list2">申请人</span>
+                    <span class="list3">预计完成日期</span>
+                    <span class="list4">操作人</span>
+                    <span class="list5">维修状态</span>
+                    <span class="list6">停c放地点</span>
+                </li>
+            </ul>
+            <div id="myCarousel" class="carousel slide">
+                <!-- 轮播（Carousel）指标 -->
+                <ol class="carousel-indicators">
+                </ol>
+                <!-- 轮播（Carousel）项目 -->
+                <div class="carousel-inner">
+                </div>
+                <!-- 轮播（Carousel）导航 -->
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <div class="shopfooter">
+            <div class="data_group">
+                <p class="datatime font-big"></p>
+                <p class="font_smalll"><span class="data"></span><span class="day"></span></p>
+            </div>
+            <div class="weather_group">
+                天气
+            </div>
+            <div class="footer_right">
+                <div class="rightBox">
+                    <p>总维修车辆：</p>
+                    <p><span class="font-big maintain_countCar">200</span>&nbsp;&nbsp;<span>辆</span></p>
+                </div>
+                <div class="rightBox">
+                    <p class="circleChart" id="0"></p>
+                    <p>排队中：<span class="maintain_queueCar">200</span>辆</p>
+                </div>
+                <div class="rightBox">
+                    <p class="circleChart" id="1"></p>
+                    <p>维修中：<span class="maintain_currentCar">200</span>辆</p>
+                </div>
+                <div class="rightBox">
+                    <p class="circleChart" id="2"></p>
+                    <p>已完成：<span class="maintain_completeCar">200</span>辆</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+</script>
+<script src="../js/ping.js"></script>
+
+</html>

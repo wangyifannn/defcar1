@@ -275,11 +275,24 @@
                         <div class="table-responsive">
                             <table id="InsTable">
                                 <div id="InsTable_toolbar" class="btn-group tablelistbox">
-                                    <a href="#" data-toggle="tab">
-                                        <button id="plate_apply" type="button" class="btn btn-default" style="margin-right:10px;">
-                                            <i class="iconfont icon-linpaixinxi"></i>临牌录入
+                                    <a href="#">
+                                        <button id="yanche_filter" type="button" class="btn btn-default" style="margin-right:10px;">
+                                            <span class="glyphicon glyphicon-glass" aria-hidden="true"></span>验车筛选
                                          </button>
                                     </a>
+                                    <span>
+                                        <button id="yanche_export" type="button" class="btn btn-default" style="margin-right:10px;">
+                                            <span class="glyphicon glyphicon-export" aria-hidden="true"></span>导出验车信息
+                                    </button>
+                                    </span>
+                                </div>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="plate">
+                        <div class="table-responsive">
+                            <table id="plateTable">
+                                <div id="plateTable_toolbar" class="btn-group tablelistbox">
                                 </div>
                             </table>
                         </div>
@@ -292,16 +305,6 @@
                             </div>
                             <table id="sumcarTable">
                                 <div id="sumcarTable_toolbar" class="btn-group tablelistbox">
-                                    <a href="#">
-                                        <button id="yanche" type="button" class="btn btn-default" style="margin-right:10px;">
-                                            <span class="glyphicon glyphicon-glass" aria-hidden="true"></span>验车筛选
-                                         </button>
-                                    </a>
-                                    <span>
-                                        <button id="yanche_export" type="button" class="btn btn-default" style="margin-right:10px;">
-                                            <span class="glyphicon glyphicon-export" aria-hidden="true"></span>导出验车信息
-                                    </button>
-                                    </span>
                                     <a href="#">
                                         <button id="sumcar_filter" type="button" class="btn btn-default" style="margin-right:10px;">
                                             <span class="glyphicon glyphicon-glass" aria-hidden="true"></span>车辆筛选
@@ -1137,6 +1140,7 @@
 
 <script type="text/javascript" src="./js/detail.js" charset="utf-8"></script>
 <script type="text/javascript" src="./js/insurance.js" charset="utf-8"></script>
+<script type="text/javascript" src="./js/plate.js" charset="utf-8"></script>
 <script type="text/javascript" src="./js/sumcar.js" charset="utf-8"></script>
 <script type="text/javascript" src="./js/maintain.js" charset="utf-8"></script>
 

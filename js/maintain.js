@@ -95,9 +95,11 @@ function loadMaintainList() {
         showToggle: true, //是否显示切换视图（table/card）按钮
         searchAlign: "right",
         showExport: true,
-        exportDataType: "basic",
+        exportDataType: "selected",
+        buttonsAlign: "right", //按钮位置  
+        exportTypes: ['excel'], //导出文件类型  
         exportOptions: {
-            ignoreColumn: [0, 8], //忽略某一列的索引  
+            ignoreColumn: [13], //忽略某一列的索引  
             fileName: '测试车辆-车辆维修列表', //文件名称设置  
             worksheetName: 'sheet1', //表格工作区名称  
             tableName: '测试车辆-车辆维修列表',
@@ -175,20 +177,8 @@ function loadMaintainList() {
                 { field: 'operator', title: '操作员', valign: "middle", align: "center", width: "5%" },
                 { field: 'forecastTime', title: '预计完成时间', valign: "middle", align: "center", width: "5%" },
                 { field: 'fin_park', title: '停放地点', valign: "middle", align: "center", width: "5%" },
+                { field: 'remark', title: '备注', valign: "middle", align: "center", width: "5%" },
                 {
-                    field: 'remark',
-                    title: '备注',
-                    valign: "middle",
-                    align: "center",
-                    width: "4%",
-                    formatter: function(value, row, index) {
-                        if (value == null) {
-                            return "";
-                        } else {
-                            return value.remark
-                        }
-                    }
-                }, {
                     field: 'operate',
                     title: '操作',
                     valign: "middle",

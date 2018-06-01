@@ -211,8 +211,7 @@ input.toolname {
     top: -1px;
 }
 
-#carListtable_toolbar .btn,
-#InsTable_toolbar .btn {
+#carListtable_toolbar .btn {
     padding: 0px 12px;
 }
 
