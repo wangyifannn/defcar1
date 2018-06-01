@@ -1,6 +1,6 @@
 function loadInsuranceList() {
     $("#InsTable").bootstrapTable('destroy').bootstrapTable({
-        url: 'https://wangyifannn.github.io/defcar1/json/driverList.json',
+        url: 'https://wangyifannn.github.io/defcar1/json/ins.json',
         // url: 'http://localhost/car/defcar/json/ins.json',
         dataType: 'json',
         striped: true, //是否显示行间隔色
