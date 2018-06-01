@@ -24,111 +24,6 @@
                 "vsn": "2015-809"
             },
             {
-                "vSn": "9883-999",
-                "operator": "车辆 1",
-                "status": "$1",
-                "applyTime": "2018-01-10",
-                "status": "排队中",
-                "applyPeople": "不合法",
-                "approveapplyTime": "更换副驾皮带轮，车辆是新车，未领标",
-                "brand": "别克",
-                "fin_park": "维修间",
-                "vsn": "陕A570UX"
-            },
-            {
-                "vSn": "2083-999",
-                "operator": "车辆 2",
-                "status": "$2",
-                "applyTime": "2018-01-10",
-                "status": "排队中",
-                "applyPeople": "合法",
-                "approveapplyTime": "2天",
-                "brand": "别克",
-                "fin_park": "维修间",
-                "vsn": "陕A870gg"
-            },
-            {
-                "vSn": 3,
-                "operator": "车辆 3",
-                "status": "$3",
-                "applyTime": "2018-01-10",
-                "status": "维修中",
-                "applyPeople": "不合法",
-                "approveapplyTime": "2天",
-                "brand": "别克",
-                "fin_park": "维修间",
-                "vsn": "陕A270UX"
-            },
-            {
-                "vSn": 4,
-                "operator": "车辆 4",
-                "status": "$4",
-                "applyTime": "2018-01-10",
-                "status": "排队中",
-                "applyPeople": "合法",
-                "approveapplyTime": "2天",
-                "brand": "别克",
-                "fin_park": "维修间",
-                "vsn": "陕A170UX"
-            },
-            {
-                "vSn": 5,
-                "operator": "车辆 5",
-                "status": "$5",
-                "applyTime": "2018-01-10",
-                "status": "已完成",
-                "applyPeople": "不合法",
-                "approveapplyTime": "2天",
-                "brand": "别克",
-                "fin_park": "维修间",
-                "vsn": "陕A470UX"
-            },
-            {
-                "vSn": 6,
-                "operator": "车辆 6",
-                "status": "$6",
-                "applyTime": "2018-01-10",
-                "status": "排队中",
-                "applyPeople": "合法",
-                "approveapplyTime": "2天",
-                "brand": "别克",
-                "fin_park": "维修间",
-                "vsn": "2015-819"
-            },
-            {
-                "vSn": 7,
-                "operator": "车辆 7",
-                "applyTime": "2018-01-10",
-                "status": "排队中",
-                "applyPeople": "合法",
-                "approveapplyTime": "2天",
-                "brand": "别克",
-                "fin_park": "维修间",
-                "vsn": "2015-811"
-            },
-            {
-                "vSn": 8,
-                "operator": "车辆 8",
-                "applyTime": "2018-01-10",
-                "status": "维修中",
-                "applyPeople": "合法",
-                "approveapplyTime": "2天",
-                "brand": "别克",
-                "fin_park": "维修间",
-                "vsn": "2015-855"
-            },
-            {
-                "vSn": "2019-228",
-                "operator": "车辆 9",
-                "applyTime": "2018-01-10",
-                "status": "排队中",
-                "applyPeople": "合法",
-                "approveapplyTime": "2天",
-                "brand": "别克",
-                "fin_park": "维修间",
-                "vsn": "2015-889"
-            },
-            {
                 "vSn": "2018-222",
                 "operator": "车辆 10",
                 "applyTime": "2018-01-10",
@@ -182,6 +77,60 @@
                 "brand": "别克",
                 "fin_park": "维修间",
                 "vsn": "2015-555"
+            }, {
+                "vSn": "2091-922",
+                "operator": "车辆 8",
+                "applyTime": "2018-01-10",
+                "status": "维修中",
+                "applyPeople": "合法",
+                "approveapplyTime": "2天",
+                "brand": "别克",
+                "fin_park": "维修间",
+                "vsn": "2015-555"
+            }, {
+                "vSn": 6,
+                "operator": "车辆 6",
+                "status": "$6",
+                "applyTime": "2018-01-10",
+                "status": "排队中",
+                "applyPeople": "合法",
+                "approveapplyTime": "2天",
+                "brand": "别克",
+                "fin_park": "维修间",
+                "vsn": "2015-819"
+            },
+            {
+                "vSn": 7,
+                "operator": "车辆 7",
+                "applyTime": "2018-01-10",
+                "status": "排队中",
+                "applyPeople": "合法",
+                "approveapplyTime": "2天",
+                "brand": "别克",
+                "fin_park": "维修间",
+                "vsn": "2015-811"
+            },
+            {
+                "vSn": 8,
+                "operator": "车辆 8",
+                "applyTime": "2018-01-10",
+                "status": "维修中",
+                "applyPeople": "合法",
+                "approveapplyTime": "2天",
+                "brand": "别克",
+                "fin_park": "维修间",
+                "vsn": "2015-855"
+            },
+            {
+                "vSn": "2019-228",
+                "operator": "车辆 9",
+                "applyTime": "2018-01-10",
+                "status": "排队中",
+                "applyPeople": "合法",
+                "approveapplyTime": "2天",
+                "brand": "别克",
+                "fin_park": "维修间",
+                "vsn": "2015-889"
             }
         ]
     }

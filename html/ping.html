@@ -30,13 +30,22 @@
         }
         
         .item {
-            height: 600px;
+            /*height: 600px;*/
             min-width: 600px;
-            border: 1px solid red;
+            /*border: 1px solid red;*/
         }
         
-        .carousel-indicators li {
-            border: 1px solid red;
+        .carousel-indicators {
+            opacity: 0;
+        }
+        
+        .carousel-control {
+            width: 4%;
+        }
+        
+        .carousel-control.right,
+        .carousel-control.left {
+            background-image: none;
         }
     </style>
 </head>
@@ -56,9 +65,9 @@
                     <span class="list1">车辆编号</span>
                     <span class="list2">申请人</span>
                     <span class="list3">预计完成日期</span>
-                    <span class="list4">操作人</span>
+                    <span class="list4">操作员</span>
                     <span class="list5">维修状态</span>
-                    <span class="list6">停c放地点</span>
+                    <span class="list6">停放地点</span>
                 </li>
             </ul>
             <div id="myCarousel" class="carousel slide">
@@ -108,8 +117,17 @@
         </div>
     </div>
 </body>
-<script type="text/javascript">
-</script>
+
 <script src="../js/ping.js"></script>
+<script type="text/javascript">
+    // 初始化轮播
+    (function() { // 初始化轮播
+        (".start-slide").click(function() {
+            ("#myCarousel").carousel('cycle');
+        });
+        ("#myCarousel").carousel('cycle');
+
+    });
+</script>
 
 </html>

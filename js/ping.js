@@ -1,10 +1,11 @@
- var pageSize = 3;
+ var pageSize = 10;
 
  function getmyHtml(page, pageSize) {
      $.ajax({
-         // url: "http://192.168.0.222:8080/car-management/carmaintain/screen.action",
+         //  url: "http://192.168.0.222:8080/car-management/carmaintain/screen.action",
          //  url: "http://localhost/car/defcar/json/screen.json",
          url: "https://wangyifannn.github.io/defcar1/json/screen.json",
+         type: "get",
          data: {
              page: page,
              size: pageSize
@@ -46,15 +47,14 @@
              }
              $(".carousel-indicators").html(page_ol);
              $(".carousel-inner").html(pageBox_ul);
-             console.log(page_ol);
-             console.log(pageBox_ul);
          }
      })
  }
 
  function getmyData(page, pageSize) {
      $.ajax({
-         url: "http://localhost/car/defcar/json/screen.json",
+         url: "http://192.168.0.222:8080/car-management/carmaintain/screen.action",
+         //  url: "http://localhost/car/defcar/json/screen.json",
          data: {
              page: page,
              size: pageSize
@@ -86,6 +86,9 @@
      })
  }
  getmyHtml(0, pageSize);
+ setInterval(function() {
+     getmyHtml(0, pageSize);
+ }, 8000)
 
  $('#myCarousel').on('slide.bs.carousel', function(event) {
      var $hoder = $('#myCarousel').find('.item'),
