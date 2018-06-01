@@ -71,7 +71,7 @@ $("#maintainTypeIn .vSn").bind('input porpertychange', function() {
 function loadMaintainList() {
     $('#maintainTable').bootstrapTable('destroy');
     $("#maintainTable").bootstrapTable({
-        url: 'https://wangyifannn.github.io/newdefcar/json/driverList.json',
+        url: 'https://wangyifannn.github.io/defcar1/json/driverList.json',
         // url: 'http://localhost/car/defcar/json/driverList.json',
         // url: allurl + "/car-management/carmaintain/query.action",
         dataType: 'json',

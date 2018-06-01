@@ -490,7 +490,7 @@ changBread("GPS", "车辆地图");
 function getcnid(url, boxname, btnname) {
     $.ajax({
         // "url": "http://localhost/car/defcar/json/item" + url + ".json",
-        "url": "https://wangyifannn.github.io/newdefcar/json/item" + url + ".json",
+        "url": "https://wangyifannn.github.io/defcar1/json/item" + url + ".json",
         // "url": "http://192.168.0.222:8080/car-management/car/findAllParentItem.action?CNID=" + url,
         "type": "get",
         "success": function(res) {
@@ -598,7 +598,7 @@ function initToolRecord(name, vSn, page) {
     // 查询装备记录详情，如果有，加载列表页面，没有进入选择页面
     $.ajax({
         // url: "http://192.168.0.222:8080/car-management/car/develop/find/" + vSn + ".action",
-        url: "https://wangyifannn.github.io/newdefcar/json/tool.json",
+        url: "https://wangyifannn.github.io/defcar1/json/tool.json",
         // url: "http://localhost/car/defcar/json/tool.json",
         type: "get",
         data: {},
@@ -730,7 +730,7 @@ function initToolRecord(name, vSn, page) {
 function getcnidSolve(url, boxname, btnname) {
     $.ajax({
         // "url": "http://localhost/car/defcar/json/item" + url + ".json",
-        "url": "https://wangyifannn.github.io/newdefcar/json/item" + url + ".json",
+        "url": "https://wangyifannn.github.io/defcar1/json/item" + url + ".json",
         // "url": "http://192.168.0.222:8080/car-management/car/findAllParentItem.action?CNID=" + url,
         "type": "get",
         "success": function(res) {

@@ -1,6 +1,6 @@
 function loadsumCarList() {
     $("#sumcarTable").bootstrapTable('destroy').bootstrapTable({
-        url: 'https://wangyifannn.github.io/newdefcar/json/driverList.json',
+        url: 'https://wangyifannn.github.io/defcar1/json/driverList.json',
         // url: 'http://localhost/car/defcar/json/driverList.json',
         // dataType: "json", //数据类型
         dataType: 'json',
