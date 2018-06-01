@@ -84,7 +84,7 @@
             "operate_ip": "192.168.1.1",
             "childrenMenus": []
         }, {
-            "mid": 301,
+            "mid": 302,
             "name": "车辆录入",
             "url": "carList",
             "priority": "1",
@@ -94,7 +94,7 @@
             "operate_ip": "127.0.0.1",
             "childrenMenus": []
         }, {
-            "mid": 302,
+            "mid": 303,
             "name": "保险管理",
             "url": "insuranceTypeIn",
             "priority": "1",
@@ -104,7 +104,7 @@
             "operate_ip": "127.0.0.1",
             "childrenMenus": []
         }, {
-            "mid": 303,
+            "mid": 304,
             "name": "车牌管理",
             "url": "plate",
             "priority": "1",
@@ -114,7 +114,7 @@
             "operate_ip": "127.0.0.1",
             "childrenMenus": []
         }, {
-            "mid": 304,
+            "mid": 305,
             "name": "还车点检",
             "url": "returncarCheck",
             "priority": "1",
@@ -124,7 +124,7 @@
             "operate_ip": "127.0.0.1",
             "childrenMenus": []
         }, {
-            "mid": 302,
+            "mid": 306,
             "name": "车辆总表",
             "url": "sumCarList",
             "priority": "1",
