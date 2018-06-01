@@ -3,8 +3,8 @@
  function getmyHtml(page, pageSize) {
      $.ajax({
          //  url: "http://192.168.0.222:8080/car-management/carmaintain/screen.action",
-         url: "http://localhost/car/defcar/json/screen.json",
-         //  url: "https://wangyifannn.github.io/defcar1/json/screen.json",
+         //  url: "http://localhost/car/defcar/json/screen.json",
+         url: "https://wangyifannn.github.io/defcar1/json/screen.json",
          type: "get",
          data: {
              page: page,
@@ -100,8 +100,8 @@
  function getmyData(page, pageSize) {
      $.ajax({
          //  url: "http://192.168.0.222:8080/car-management/carmaintain/screen.action",
-         url: "http://localhost/car/defcar/json/screen.json",
-         //  url: "https://wangyifannn.github.io/defcar1/json/screen.json",
+         //   url: "http://localhost/car/defcar/json/screen.json",
+         url: "https://wangyifannn.github.io/defcar1/json/screen.json",
          data: {
              page: page,
              size: pageSize
