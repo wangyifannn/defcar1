@@ -3,8 +3,8 @@
  function getmyHtml(page, pageSize) {
      $.ajax({
          //  url: "http://192.168.0.222:8080/car-management/carmaintain/screen.action",
-         //  url: "http://localhost/car/defcar/json/screen.json",
-         url: "https://wangyifannn.github.io/defcar1/json/screen.json",
+         url: "http://localhost/car/defcar/json/screen.json",
+         //  url: "https://wangyifannn.github.io/defcar1/json/screen.json",
          type: "get",
          data: {
              page: page,
@@ -47,6 +47,52 @@
              }
              $(".carousel-indicators").html(page_ol);
              $(".carousel-inner").html(pageBox_ul);
+
+             if (isFF() || isChrome()) {
+                 $("head").append("<script type='text/javascript' src='../assets/js/circleChart.js'>" + '<' + "/script>");
+                 //  console.log($(document.body).width());
+                 //  if ($(document.body).width() >= 3800) {
+                 //  console.log($(document.body).width());
+                 //  $("ul.line li span").css("fontSize", "40px");
+                 //  $("ul.title li span").css("fontSize", "48px");
+                 //  $("ul.title").css("margin-bottom", "7px");
+                 //  $("ul.line li").css({
+                 //      "border-bottom-width": "5px",
+                 //      "border-bottom-width": "5px"
+                 //  });
+                 $(".circleChart#0").circleChart({
+                     size: 70,
+                     color: "#E41937",
+                     backgroundColor: "#eee",
+                     value: res.queuepercentage,
+                     text: 0,
+                     onDraw: function(el, circle) {
+                         circle.text(Math.round(circle.value) + "%");
+                     }
+                 });
+                 $(".circleChart#1").circleChart({
+                     size: 70,
+                     color: "#2ff1cf",
+                     backgroundColor: "#eee",
+                     value: res.currentpercentage,
+                     text: 0,
+                     top: 50,
+                     onDraw: function(el, circle) {
+                         circle.text(Math.round(circle.value) + "%");
+                     }
+                 });
+                 $(".circleChart#2").circleChart({
+                     size: 70,
+                     color: "#eb7a00",
+                     backgroundColor: "#eee",
+                     value: res.completepercentage,
+                     text: 0,
+                     onDraw: function(el, circle) {
+                         circle.text(Math.round(circle.value) + "%");
+                     }
+                 });
+                 //  }
+             }
          }
      })
  }
@@ -54,8 +100,8 @@
  function getmyData(page, pageSize) {
      $.ajax({
          //  url: "http://192.168.0.222:8080/car-management/carmaintain/screen.action",
-         //  url: "http://localhost/car/defcar/json/screen.json",
-         url: "https://wangyifannn.github.io/defcar1/json/screen.json",
+         url: "http://localhost/car/defcar/json/screen.json",
+         //  url: "https://wangyifannn.github.io/defcar1/json/screen.json",
          data: {
              page: page,
              size: pageSize
@@ -86,9 +132,9 @@
          }
      })
  }
- getmyHtml(0, pageSize);
+ getmyHtml(1, pageSize);
  setInterval(function() {
-     getmyHtml(0, pageSize);
+     getmyHtml(1, pageSize);
  }, 8000)
 
  $('#myCarousel').on('slide.bs.carousel', function(event) {
