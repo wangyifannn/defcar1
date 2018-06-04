@@ -167,13 +167,13 @@ function loadDriverList() {
 
 function driveroperateFormatter(value, row, index) {
     // 未授权
-    if (row.isallow == "禁止") {
+    if (row.isallow == "1") {
         return [
             '<button type="button" id="btn_driverdel" class="my_btn btn btn-default  btn-sm" style="margin-right:15px;">删除</button>',
             '<button type="button" id="btn_driverup" class="my_btn btn btn-default  btn-sm" style="margin-right:15px;">修改</button>',
             '<button type="button" id="btn_driverimpower" class="my_btn btn btn-default  btn-sm" style="margin-right:15px;">授权</button>'
         ].join('');
-    } else if (row.isallow == "正常") {
+    } else if (row.isallow == "2") {
         return [
             '<button type="button" id="btn_driverdel" class="my_btn btn btn-default  btn-sm" style="margin-right:15px;">删除</button>',
             '<button type="button" id="btn_driverup" class="my_btn btn btn-default  btn-sm" style="margin-right:15px;">修改</button>',
