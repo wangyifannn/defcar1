@@ -147,7 +147,8 @@ function caroperateFormatter(value, row, index) {
 
 window.caroperateEvents = {
     'click #safe_btn': function(e, value, row, index) { //安全
-        initsafeCheck("#sCheck .pot_pressure", "#sCheck .check_itembox", "sCheck_btn");
+        findSafeInfo("#sCheck .pot_pressure", "#sCheck .check_itembox", "sCheck_btn", row.vSn);
+//         initsafeCheck("#sCheck .pot_pressure", "#sCheck .check_itembox", "sCheck_btn");
         window.sessionStorage.beforeHash = window.location.hash;
         window.location.hash = $(this).parent().attr("href");
         $(".carList").removeClass("active");
